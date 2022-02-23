@@ -1,0 +1,16 @@
+{
+  "name": "ibge-faq-server",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "camelcase": "^6.3.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.3",
+    "xlsx": "^0.18.2"
+  }
+}
