@@ -20,6 +20,8 @@ function App() {
       .catch(console.error);
   }, [page, query]);
 
+  console.log(items, pages);
+
   const handleSetQuery = (q) =>
     setInputs((inputsState) => ({ ...inputsState, page: 0, query: q }));
   const handleSetPage = (p) =>

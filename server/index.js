@@ -1,3 +1,4 @@
+import path from 'path';
 import express from 'express';
 import cors from 'cors';
 import camelCase from 'camelcase';
@@ -10,7 +11,7 @@ const app = express();
 app.use(cors({ origin: '*' }));
 app.options('*', cors());
 
-app.use('/', (req, res) => {
+app.use('/api', (req, res) => {
   const { page, q } = req.query;
   const workbook = xlsx.readFile('data/FAQ-Entrada das quesões.xlsx');
   const sheet_name_list = workbook.SheetNames;
@@ -50,4 +51,10 @@ app.use('/', (req, res) => {
   });
 });
 
-app.listen(3001, () => console.log('Listening...'));
+app.use(express.static(path.join('../build')));
+
+app.get('*', (_, res) => {
+  res.sendFile(path.join('../build/index.html'));
+});
+
+app.listen(process.env.PORT || 3001, () => console.log('Listening...'));
